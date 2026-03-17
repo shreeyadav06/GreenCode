@@ -1,0 +1,55 @@
+{
+  "familyId": "FAM-001",
+  "familyName": "The Greenwoods",
+  "members": [
+    {
+      "name": "Alice",
+      "age": 42,
+      "role": "Parent",
+      "activities": [
+        {
+          "type": "travel",
+          "date": "2026-03-17",
+          "description": "Commute to work",
+          "distance": 25.5,
+          "mode": "car"
+        },
+        {
+          "type": "food",
+          "date": "2026-03-17",
+          "description": "Lunch at cafe",
+          "mealType": "vegan",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "name": "Bob",
+      "age": 44,
+      "role": "Parent",
+      "activities": [
+        {
+          "type": "energy",
+          "date": "2026-03-17",
+          "description": "Weekly electricity usage",
+          "kwh": 120.0,
+          "energySource": "grid"
+        }
+      ]
+    },
+    {
+      "name": "Charlie",
+      "age": 12,
+      "role": "Child",
+      "activities": [
+        {
+          "type": "travel",
+          "date": "2026-03-17",
+          "description": "Bus to school",
+          "distance": 8.0,
+          "mode": "bus"
+        }
+      ]
+    }
+  ]
+}

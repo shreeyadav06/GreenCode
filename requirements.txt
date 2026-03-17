@@ -1,0 +1,17 @@
+# GreenCode Requirements
+
+## Backend
+- Java 25 (MANDATORY)
+- Maven 3.9+
+- Jackson (for JSON serialization)
+- Sun HTTP Server (Lightweight API)
+
+## Frontend
+- React 19+
+- Next.js 16 (App Router)
+- Vanilla CSS / Tailwind (Optional)
+
+## Development Tools
+- Git
+- VS Code / IntelliJ
+- Browser (Chrome/Firefox)
