@@ -14,6 +14,7 @@ public class EmissionCalculator {
         "car", 0.17,
         "bus", 0.10,
         "train", 0.04,
+        "flight", 0.25,
         "bike", 0.0
     );
 
@@ -36,8 +37,24 @@ public class EmissionCalculator {
             double factor = FOOD_FACTORS.getOrDefault(food.getMealType().toLowerCase(), 2.5);
             return food.getQuantity() * factor;
         } else if (activity instanceof EnergyActivity energy) {
-            double factor = ENERGY_FACTORS.getOrDefault(energy.getEnergySource().toLowerCase(), 0.4);
-            return energy.getKwh() * factor;
+            double factor = ENERGY_FACTORS.getOrDefault(
+                energy.getEnergySource() != null ? energy.getEnergySource().toLowerCase() : "grid", 0.45);
+            
+            if (energy.getApplianceType() != null && !energy.getApplianceType().isEmpty()) {
+                double wattage = 0;
+                double time = 0;
+                switch(energy.getApplianceType().toLowerCase()) {
+                    case "fan": wattage = 0.075; time = energy.getHours(); break;
+                    case "ac": wattage = 1.5; time = energy.getHours(); break;
+                    case "fridge": wattage = 0.150; time = 24.0 * Math.max(1, energy.getQuantity()); break;
+                    case "lights": wattage = 0.060; time = 6.0 * Math.max(1, energy.getQuantity()); break;
+                }
+                double calculatedKwh = wattage * time;
+                energy.setKwh(calculatedKwh); // store it back for display
+                return calculatedKwh * factor;
+            } else {
+                return energy.getKwh() * factor;
+            }
         }
         return 0.0;
     }

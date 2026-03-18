@@ -3,6 +3,11 @@ package com.tracker.model;
 public class EnergyActivity extends Activity {
     private double kwh;
     private String energySource; // e.g., "grid", "solar"
+    
+    // new fields for appliance-based tracking
+    private String applianceType; // "fan", "ac", "fridge", "lights"
+    private double hours;
+    private int quantity;
 
     public EnergyActivity() {}
 
@@ -11,6 +16,15 @@ public class EnergyActivity extends Activity {
         this.kwh = kwh;
         this.energySource = energySource;
     }
+
+    public String getApplianceType() { return applianceType; }
+    public void setApplianceType(String applianceType) { this.applianceType = applianceType; }
+
+    public double getHours() { return hours; }
+    public void setHours(double hours) { this.hours = hours; }
+
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
     public double getKwh() { return kwh; }
     public void setKwh(double kwh) { this.kwh = kwh; }

@@ -1,13 +1,14 @@
 package com.tracker.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tracker.model.Activity;
 import com.tracker.model.Family;
 
 import java.io.File;
 import java.io.IOException;
 
 public class FamilyService {
-    private static final String DATA_FILE = "data/sample_family.json";
+    private static final String DATA_FILE = "../data/sample_family.json";
     private final ObjectMapper mapper;
     private Family family;
 
@@ -32,6 +33,23 @@ public class FamilyService {
 
     public Family getFamily() {
         return family;
+    }
+
+    public void addMember(com.tracker.model.Member member) {
+        if (family == null) return;
+        family.addMember(member);
+        saveFamily();
+    }
+
+    public void addMemberActivity(String memberName, Activity activity) {
+        if (family == null) return;
+        family.getMembers().stream()
+                .filter(m -> m.getName().equalsIgnoreCase(memberName))
+                .findFirst()
+                .ifPresent(m -> {
+                    m.addActivity(activity);
+                    saveFamily();
+                });
     }
 
     public void saveFamily() {
