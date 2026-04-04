@@ -17,6 +17,7 @@ public class Main {
         // Register handlers
         server.createContext("/api/family", new FamilyHandler(familyService));
         server.createContext("/api/members", new com.tracker.server.MemberHandler(familyService));
+        server.createContext("/api/insights", new com.tracker.server.InsightsHandler(familyService));
 
         server.setExecutor(null); // default executor
         server.start();

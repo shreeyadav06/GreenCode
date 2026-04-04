@@ -1,8 +1,10 @@
 package com.tracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Member {
     private String name;
     private int age;
@@ -20,19 +22,43 @@ public class Member {
         this.activities = new ArrayList<>();
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public int getAge() {
+        return age;
+    }
 
-    public List<Activity> getActivities() { return activities; }
-    public void setActivities(List<Activity> activities) { this.activities = activities; }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
 
     public void addActivity(Activity activity) {
         this.activities.add(activity);
+    }
+
+    public double getTotalEmissions() {
+        return com.tracker.service.EmissionCalculator.calculateMemberTotal(this);
     }
 }

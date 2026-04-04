@@ -1,0 +1,28 @@
+# Java
+*.class
+target/
+.classpath
+.project
+.settings/
+backend/target/
+
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large files
+hero.png
+
+# Environment
+.env*

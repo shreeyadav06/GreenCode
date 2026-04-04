@@ -1,8 +1,10 @@
 package com.tracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Family {
     private String familyId;
     private String familyName;
@@ -18,16 +20,35 @@ public class Family {
         this.members = new ArrayList<>();
     }
 
-    public String getFamilyId() { return familyId; }
-    public void setFamilyId(String familyId) { this.familyId = familyId; }
+    public String getFamilyId() {
+        return familyId;
+    }
 
-    public String getFamilyName() { return familyName; }
-    public void setFamilyName(String familyName) { this.familyName = familyName; }
+    public void setFamilyId(String familyId) {
+        this.familyId = familyId;
+    }
 
-    public List<Member> getMembers() { return members; }
-    public void setMembers(List<Member> members) { this.members = members; }
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
 
     public void addMember(Member member) {
         this.members.add(member);
+    }
+
+    public double getTotalEmissions() {
+        return com.tracker.service.EmissionCalculator.calculateFamilyTotal(this);
     }
 }

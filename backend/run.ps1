@@ -1,6 +1,8 @@
-$env:JAVA_HOME="C:\Program Files\Java\jdk-25"
-$repo = "C:\Users\shett\.m2\repository\com\fasterxml\jackson\core"
-$cp = ".;$repo\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;$repo\jackson-core\2.15.2\jackson-core-2.15.2.jar;$repo\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar"
+if (!$env:JAVA_HOME) { 
+    $env:JAVA_HOME="C:\Program Files\Java\jdk-25" 
+}
+$repo = "C:\Users\shree\.m2\repository\com\fasterxml\jackson\core"
+$cp = ".;$repo\jackson-databind\2.16.1\jackson-databind-2.16.1.jar;$repo\jackson-core\2.16.1\jackson-core-2.16.1.jar;$repo\jackson-annotations\2.16.1\jackson-annotations-2.16.1.jar"
 
 if (!(Test-Path target/classes)) { New-Item -ItemType Directory -Path target/classes }
 
