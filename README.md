@@ -8,6 +8,8 @@ GreenCode is a family carbon-footprint tracker with a Next.js dashboard connecte
 - React 19.2.3
 - TypeScript 5
 - Tailwind CSS 4
+- Java JDK 25
+- Built-in Java HttpServer (`com.sun.net.httpserver`)
 
 ## Pages
 
