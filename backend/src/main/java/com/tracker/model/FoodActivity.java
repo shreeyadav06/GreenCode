@@ -20,8 +20,20 @@ public class FoodActivity extends Activity {
 
     @Override
     public double calculateCO2() {
-        // Mock calculation logic for v0.2
-        double factor = mealType.equalsIgnoreCase("vegan") ? 1.5 : 3.0;
-        return quantity * factor;
+        // Keep this method aligned with EmissionCalculator fallbacks.
+        String normalizedMealType = mealType == null ? "omnivore" : mealType.toLowerCase();
+        double factor;
+        switch (normalizedMealType) {
+            case "vegan":
+                factor = 1.5;
+                break;
+            case "vegetarian":
+                factor = 2.0;
+                break;
+            default:
+                factor = 3.3;
+                break;
+        }
+        return Math.max(1, quantity) * factor;
     }
 }

@@ -3,6 +3,7 @@ package com.tracker.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tracker.model.Activity;
 import com.tracker.model.Family;
+import com.tracker.model.FoodActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +44,11 @@ public class FamilyService {
 
     public void addMemberActivity(String memberName, Activity activity) {
         if (family == null) return;
+
+        if (activity instanceof FoodActivity food && food.getQuantity() <= 0) {
+            food.setQuantity(1);
+        }
+
         family.getMembers().stream()
                 .filter(m -> m.getName().equalsIgnoreCase(memberName))
                 .findFirst()

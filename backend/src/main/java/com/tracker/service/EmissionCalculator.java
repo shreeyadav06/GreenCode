@@ -14,8 +14,11 @@ public class EmissionCalculator {
             "car", 0.17,
             "bus", 0.10,
             "train", 0.04,
+            "metro", 0.04,
             "flight", 0.25,
-            "bike", 0.0);
+            "bike", 0.0,
+            "auto", 0.14,
+            "cab", 0.14);
 
     private static final Map<String, Double> FOOD_FACTORS = Map.of(
             "vegan", 1.5,
@@ -28,11 +31,14 @@ public class EmissionCalculator {
 
     public static double calculate(Activity activity) {
         if (activity instanceof TravelActivity travel) {
-            double factor = TRAVEL_FACTORS.getOrDefault(travel.getMode().toLowerCase(), 0.12);
+            String mode = travel.getMode() != null ? travel.getMode().toLowerCase() : "car";
+            double factor = TRAVEL_FACTORS.getOrDefault(mode, 0.12);
             return travel.getDistance() * factor;
         } else if (activity instanceof FoodActivity food) {
-            double factor = FOOD_FACTORS.getOrDefault(food.getMealType().toLowerCase(), 2.5);
-            return food.getQuantity() * factor;
+            String mealType = food.getMealType() != null ? food.getMealType().toLowerCase() : "omnivore";
+            double factor = FOOD_FACTORS.getOrDefault(mealType, 2.5);
+            int meals = Math.max(1, food.getQuantity());
+            return meals * factor;
         } else if (activity instanceof EnergyActivity energy) {
             double factor = ENERGY_FACTORS.getOrDefault(
                     energy.getEnergySource() != null ? energy.getEnergySource().toLowerCase() : "grid", 0.45);

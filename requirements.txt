@@ -1,17 +1,19 @@
-# GreenCode Requirements
+# GreenCode Requirements (Project Environment)
 
-## Backend
-- Java 25 (MANDATORY)
-- Maven 3.9+
-- Jackson (for JSON serialization)
-- Sun HTTP Server (Lightweight API)
+This file documents runtime and tooling requirements for this repository.
+It is not a Python pip requirements file.
 
-## Frontend
-- React 19+
-- Next.js 16 (App Router)
-- Vanilla CSS / Tailwind (Optional)
+Backend (Java API)
+- Java JDK 25 (required)
+- Jackson Databind 2.16.1
+- Jackson Datatype JSR310 2.16.1
+- Built-in Java HttpServer (`com.sun.net.httpserver`)
 
-## Development Tools
-- Git
-- VS Code / IntelliJ
-- Browser (Chrome/Firefox)
+Frontend (Web App)
+- Node.js 20+
+- npm 10+
+- Next.js 16.1.7
+- React 19.2.3
+- React DOM 19.2.3
+- TypeScript 5+
+- Tailwind CSS 4+

@@ -127,7 +127,10 @@ export default function DashboardPage() {
                 activityPayload.hours = form.hours;
                 activityPayload.quantity = form.quantity;
             }
-            if (activeTab === 'food') activityPayload.mealType = form.mealType;
+            if (activeTab === 'food') {
+                activityPayload.mealType = form.mealType;
+                activityPayload.quantity = 1;
+            }
 
             const res = await fetch('http://localhost:8080/api/family', {
                 method: 'POST',
@@ -283,10 +286,13 @@ export default function DashboardPage() {
                                                     <>
                                                         <div>
                                                             <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Transport Mode</label>
-                                                            <div className="grid grid-cols-3 gap-2">
+                                                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                                                                 <ModeButton active={form.mode === 'car'} onClick={() => setForm({ ...form, mode: 'car' })} icon="directions_car" label="Car" />
                                                                 <ModeButton active={form.mode === 'bus'} onClick={() => setForm({ ...form, mode: 'bus' })} icon="directions_bus" label="Bus" />
                                                                 <ModeButton active={form.mode === 'flight'} onClick={() => setForm({ ...form, mode: 'flight' })} icon="flight" label="Air" />
+                                                                <ModeButton active={form.mode === 'bike'} onClick={() => setForm({ ...form, mode: 'bike' })} icon="directions_bike" label="Bike" />
+                                                                <ModeButton active={form.mode === 'metro'} onClick={() => setForm({ ...form, mode: 'metro' })} icon="train" label="Metro" />
+                                                                <ModeButton active={form.mode === 'cab'} onClick={() => setForm({ ...form, mode: 'cab' })} icon="local_taxi" label="Auto/Cab" />
                                                             </div>
                                                         </div>
                                                         <div>

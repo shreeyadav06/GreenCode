@@ -79,25 +79,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Partners Section */}
-        <section className="bg-primary py-32 px-8 overflow-hidden relative">
-          <div className="absolute top-0 right-0 opacity-10 w-full h-full pointer-events-none">
-            <img className="w-full h-full object-cover" alt="Architectural textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrSMaScDBV3gyhWgsdsMqlMeHwDxI8ox3Ip2QmO8Gqt3wDN8AO8dMp2F38HiM_nSa7pHLCIMi9y443X0gCl22cJdbuYpAArC95UQ_n6Sr1_uy1gWpj3TWfQSGX6vVyvBssk2M08Zmn6De-MbI7N_gT6j0uMYznhCExcgWigHbM9ufR2iXecUKEmGPsbHVPyPr1bEVH-WGGqM5ivcZTnZ10G7DMDrNqo9RJgy2TjbPM_Pz3gyrjjLe41vhSN6LQ0yjVctIUxEEWQCg" />
-          </div>
-          <div className="max-w-screen-xl mx-auto text-center relative z-10">
-            <p className="font-label text-secondary-fixed uppercase tracking-[0.3em] text-xs mb-12">Global Network</p>
-            <h3 className="font-headline text-3xl md:text-4xl font-bold text-white mb-20 max-w-2xl mx-auto leading-tight">
-              Helping 100+ leading companies get better results through organic efficiency.
-            </h3>
-            <div className="flex flex-wrap justify-center items-center gap-16 opacity-60">
-              <PartnerLogo name="VOLTICO" />
-              <PartnerLogo name="GREENPATH" />
-              <PartnerLogo name="ECOSTREAM" />
-              <PartnerLogo name="TERRANODE" />
-              <PartnerLogo name="OXYGENIUM" />
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
@@ -126,10 +107,3 @@ function ImpactCard({ title, category }: { title: string; category: string }) {
   );
 }
 
-function PartnerLogo({ name }: { name: string }) {
-  return (
-    <div className="text-white font-headline font-black text-2xl tracking-tighter hover:opacity-100 transition-opacity cursor-default">
-      {name}
-    </div>
-  );
-}

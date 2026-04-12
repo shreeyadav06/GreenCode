@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GreenCode Frontend
 
-## Getting Started
+GreenCode is a family carbon-footprint tracker with a Next.js dashboard connected to a Java backend.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 16.1.7 (App Router)
+- React 19.2.3
+- TypeScript 5
+- Tailwind CSS 4
+
+## Pages
+
+- Landing page: `/`
+- Dashboard page: `/dashboard`
+
+The landing page includes hero and impact sections. The previous global network section has been removed.
+
+## Dashboard Features
+
+- Log activities by category:
+	- Travel
+	- Food
+	- Energy
+- Add family members
+- View per-member and family totals
+- View category insights from backend aggregation
+
+### Supported Activity Inputs
+
+- Travel modes:
+	- Car
+	- Bus
+	- Air (flight)
+	- Bike
+	- Metro
+	- Auto/Cab
+- Food meal types:
+	- Vegan
+	- Vegetarian
+	- Omnivore
+- Energy appliance logging:
+	- Fan, AC, Fridge, Lights, TV, Washing Machine, Heater, PC, Microwave
+
+Note: Food logs are sent with quantity `1` by default so they always contribute to emissions.
+
+## API Integration
+
+This frontend expects backend APIs at `http://localhost:8080`:
+
+- `GET /api/family`
+- `POST /api/family`
+- `POST /api/members`
+- `GET /api/insights`
+
+## Local Development
+
+### 1) Start Backend (from repository root)
+
+```powershell
+cd backend
+./run.ps1
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Backend runs on `http://localhost:8080`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2) Start Frontend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Learn More
+Frontend runs on `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## NPM Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - start development server
+- `npm run build` - production build
+- `npm run start` - run production build
+- `npm run lint` - run ESLint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Footer copyright year is `2026`.
+- Family/activity data is persisted by backend in `../data/sample_family.json`.
