@@ -16,7 +16,7 @@ public class EmissionCalculator {
             "train", 0.04,
             "metro", 0.04,
             "flight", 0.25,
-            "bike", 0.0,
+            "bike", 0.01,
             "auto", 0.14,
             "cab", 0.14);
 

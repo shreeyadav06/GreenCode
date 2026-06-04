@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = EnergyActivity.class, name = "energy")
 })
 public abstract class Activity {
-    private String date;
+        private String date;
     private String description;
 
     public Activity() {}
