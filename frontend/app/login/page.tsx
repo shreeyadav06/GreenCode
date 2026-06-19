@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from 'react';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, getRedirectResult } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '../../contexts/AuthContext';
+import { useEffect } from 'react';
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,6 +14,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      window.location.href = '/';
+    }
+  }, [user]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +31,7 @@ export default function LoginPage() {
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
       }
-      router.push('/');
+      window.location.href = '/';
     } catch (err: any) {
       setError(err.message);
     }
@@ -33,7 +42,7 @@ export default function LoginPage() {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      router.push('/');
+      window.location.href = '/';
     } catch (err: any) {
       setError(err.message);
     }
@@ -41,7 +50,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface px-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-sm border border-outline-variant">
+      <div className="max-w-md w-full bg-surface p-8 rounded-2xl shadow-sm border border-outline-variant">
         <div className="text-center mb-8">
           <Link href="/" className="font-headline text-3xl font-extrabold text-primary tracking-tight">
             Greencode.
@@ -94,13 +103,13 @@ export default function LoginPage() {
               <div className="w-full border-t border-outline-variant"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-on-surface-variant">Or continue with</span>
+              <span className="px-2 bg-surface text-on-surface-variant">Or continue with</span>
             </div>
           </div>
           
           <button
             onClick={handleGoogleSignIn}
-            className="mt-6 w-full flex items-center justify-center gap-3 bg-white border border-outline-variant text-on-surface py-3 rounded-md font-bold hover:bg-surface transition-colors"
+            className="mt-6 w-full flex items-center justify-center gap-3 bg-surface border border-outline-variant text-on-surface py-3 rounded-md font-bold hover:brightness-95 transition-colors"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />

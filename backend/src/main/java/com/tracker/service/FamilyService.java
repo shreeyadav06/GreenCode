@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class FamilyService {
     private static final String DATA_FILE = "../data/sample_family.json";
     private static final String COLLECTION_NAME = "families";
-    private static final String DOC_ID = "FAM-000";
+    private static final String DOC_ID = "FAM-001";
     private final ObjectMapper mapper;
     private Family family;
 
@@ -41,31 +41,12 @@ public class FamilyService {
                 }
             }
         } catch (Exception e) {
-            System.err.println("Could not load from Firestore, falling back to local file: " + e.getMessage());
+            System.err.println("Could not load from Firestore: " + e.getMessage());
         }
 
-        // Fallback to local file
-        try {
-            File file = new File(DATA_FILE);
-            if (file.exists()) {
-                this.family = mapper.readValue(file, Family.class);
-                System.out.println("Loaded data from local file.");
-                // Seed Firestore with this data so it's there next time
-                try {
-                    Firestore db = FirebaseConfig.getFirestore();
-                    if (db != null) {
-                        saveFamily();
-                    }
-                } catch (Exception e) {
-                    // Ignore
-                }
-            } else {
-                this.family = new Family(DOC_ID, "New Family");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            this.family = new Family("FAM-ERR", "Error Family");
-        }
+        // Start fresh
+        System.out.println("No existing data found in Firestore, initializing empty family.");
+        this.family = new Family(DOC_ID, "My Green Family");
     }
 
     public Family getFamily() {
