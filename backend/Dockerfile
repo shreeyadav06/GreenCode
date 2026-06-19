@@ -9,5 +9,5 @@ RUN mvn dependency:go-offline
 # Expose backend port
 EXPOSE 8080
 
-# Run the application
-CMD ["mvn", "exec:java"]
+# Run the application by compiling and then executing the main class
+CMD ["mvn", "compile", "exec:java"]
