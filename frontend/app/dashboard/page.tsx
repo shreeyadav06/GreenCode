@@ -168,9 +168,9 @@ export default function DashboardPage() {
                 <aside className="w-72 fixed h-[calc(100vh-6rem)] hidden lg:flex flex-col gap-8 py-8 px-6 border-r border-outline-variant/10 dark:border-outline-variant/5">
                     <div className="mb-4">
                         <div className="bg-primary/5 dark:bg-primary/10 p-4 rounded-2xl border border-primary/10 dark:border-primary/15">
-                            <p className="font-headline uppercase tracking-widest text-[10px] text-primary/70 mb-1">Family Unit</p>
-                            <h3 className="text-xl font-bold text-primary tracking-tight">{family?.familyName}</h3>
-                            <p className="text-[10px] font-bold text-secondary mt-1 uppercase">Active Monitoring</p>
+                            <p className="font-headline uppercase tracking-widest text-[10px] text-primary/70 dark:text-white/50 mb-1">Family Unit</p>
+                            <h3 className="text-xl font-bold text-primary dark:text-white tracking-tight">{family?.familyName}</h3>
+                            <p className="text-[10px] font-bold text-secondary dark:text-primary mt-1 uppercase">Active Monitoring</p>
                         </div>
                     </div>
 
@@ -182,7 +182,7 @@ export default function DashboardPage() {
 
                     {/* Add Member Form */}
                     <div className="mt-auto bg-surface-container dark:bg-surface-container-high/50 p-6 rounded-2xl border border-transparent dark:border-outline-variant/5">
-                        <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Add Member</h4>
+                        <h4 className="text-xs font-bold text-primary dark:text-white uppercase tracking-widest mb-4">Add Member</h4>
                         <form onSubmit={handleAddMember} className="space-y-3">
                             <input
                                 type="text"
@@ -233,9 +233,9 @@ export default function DashboardPage() {
                                             <circle className="text-primary transition-all duration-1000" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" strokeDasharray="282.7" strokeDashoffset={282.7 - (282.7 * Math.min(1, familyTotal / 5000))} strokeLinecap="round" strokeWidth="8"></circle>
                                         </svg>
                                         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                                            <span className="font-label uppercase tracking-widest text-[10px] text-outline mb-1">Family Footprint</span>
-                                            <h2 className="text-4xl font-headline font-extrabold tracking-tighter text-primary">{familyTotal.toFixed(1)}</h2>
-                                            <span className="text-[10px] font-bold text-outline-variant uppercase">kg CO2e</span>
+                                            <span className="font-label uppercase tracking-widest text-[10px] text-outline dark:text-white/50 mb-1">Family Footprint</span>
+                                            <h2 className="text-4xl font-headline font-extrabold tracking-tighter text-primary dark:text-white">{familyTotal.toFixed(1)}</h2>
+                                            <span className="text-[10px] font-bold text-outline-variant dark:text-white/40 uppercase">kg CO2e</span>
                                         </div>
                                         <div className="absolute -right-4 top-4 bg-secondary-container px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
                                             <span className="material-symbols-outlined text-[14px] text-secondary">check_circle</span>
@@ -244,11 +244,11 @@ export default function DashboardPage() {
                                     </div>
 
                                     <div className="flex-1">
-                                        <h1 className="text-5xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary leading-tight mb-4">
+                                        <h1 className="text-5xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary dark:text-white leading-tight mb-4">
                                             Healthy Planet, Healthy Family
                                         </h1>
-                                        <p className="text-outline text-lg max-w-xl">
-                                            Your family carbon impact is currently <span className="text-primary font-bold">{(familyTotal / (family?.members.length || 1)).toFixed(1)}kg</span> per person. Tracking every mile and watt helps our community reach Net Zero faster.
+                                        <p className="text-outline dark:text-white/70 text-lg max-w-xl">
+                                            Your family carbon impact is currently <span className="text-primary dark:text-primary font-bold">{(familyTotal / (family?.members.length || 1)).toFixed(1)}kg</span> per person. Tracking every mile and watt helps our community reach Net Zero faster.
                                         </p>
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@ export default function DashboardPage() {
                                 {/* Activity Logger */}
                                 <div id="log-activity-section" className="xl:col-span-8 bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5 shadow-sm dark:shadow-black/20">
                                     <div className="flex items-center justify-between mb-8">
-                                        <h2 className="text-2xl font-headline font-bold text-primary">Log Activity</h2>
+                                        <h2 className="text-2xl font-headline font-bold text-primary dark:text-white">Log Activity</h2>
                                         <div className="flex gap-1 bg-surface-container p-1 rounded-xl">
                                             <TabButton active={activeTab === 'travel'} onClick={() => setActiveTab('travel')}>Travel</TabButton>
                                             <TabButton active={activeTab === 'food'} onClick={() => setActiveTab('food')}>Food</TabButton>
@@ -270,7 +270,7 @@ export default function DashboardPage() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                             <div className="space-y-6">
                                                 <div>
-                                                    <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Select Member</label>
+                                                    <label className="block text-[10px] font-bold uppercase tracking-widest text-outline dark:text-white/50 mb-3">Select Member</label>
                                                     <select
                                                         required
                                                         className="w-full bg-surface-container-low border-none rounded-xl p-4 font-headline font-bold text-primary focus:ring-1 focus:ring-primary outline-none"
@@ -285,7 +285,7 @@ export default function DashboardPage() {
                                                 {activeTab === 'travel' && (
                                                     <>
                                                         <div>
-                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Transport Mode</label>
+                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline dark:text-white/50 mb-3">Transport Mode</label>
                                                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                                                                 <ModeButton active={form.mode === 'car'} onClick={() => setForm({ ...form, mode: 'car' })} icon="directions_car" label="Car" />
                                                                 <ModeButton active={form.mode === 'bus'} onClick={() => setForm({ ...form, mode: 'bus' })} icon="directions_bus" label="Bus" />
@@ -296,7 +296,7 @@ export default function DashboardPage() {
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Distance (KM)</label>
+                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline dark:text-white/50 mb-3">Distance (KM)</label>
                                                             <input
                                                                 required
                                                                 type="number"
@@ -311,7 +311,7 @@ export default function DashboardPage() {
 
                                                 {activeTab === 'food' && (
                                                     <div>
-                                                        <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Diet Type</label>
+                                                        <label className="block text-[10px] font-bold uppercase tracking-widest text-outline dark:text-white/50 mb-3">Diet Type</label>
                                                         <div className="grid grid-cols-3 gap-2">
                                                             <ModeButton active={form.mealType === 'vegan'} onClick={() => setForm({ ...form, mealType: 'vegan' })} icon="eco" label="Vegan" />
                                                             <ModeButton active={form.mealType === 'vegetarian'} onClick={() => setForm({ ...form, mealType: 'vegetarian' })} icon="egg" label="Veg" />
@@ -323,7 +323,7 @@ export default function DashboardPage() {
                                                 {activeTab === 'energy' && (
                                                     <>
                                                         <div>
-                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">Appliance</label>
+                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline dark:text-white/50 mb-3">Appliance</label>
                                                             <select
                                                                 className="w-full bg-surface-container-low border-none rounded-xl p-4 font-headline font-bold text-primary focus:ring-1 focus:ring-primary outline-none"
                                                                 value={form.applianceType}
@@ -341,7 +341,7 @@ export default function DashboardPage() {
                                                             </select>
                                                         </div>
                                                         <div>
-                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline mb-3">
+                                                            <label className="block text-[10px] font-bold uppercase tracking-widest text-outline dark:text-white/50 mb-3">
                                                                 Hours Used / Quantity
                                                             </label>
                                                             <input
@@ -382,14 +382,14 @@ export default function DashboardPage() {
                                 {/* Member List (Quick Glance) */}
                                 <div className="xl:col-span-4 flex flex-col gap-8">
                                     <div className="bg-surface-container dark:bg-surface-container-high/50 p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5 shadow-sm dark:shadow-black/20 h-full">
-                                        <h3 className="text-xl font-headline font-bold text-primary mb-8">Family Impact</h3>
+                                        <h3 className="text-xl font-headline font-bold text-primary dark:text-white mb-8">Family Impact</h3>
                                         <div className="space-y-4">
                                             {family?.members.map(member => (
                                                 <div key={member.name} className="bg-surface-container-lowest dark:bg-surface-container p-5 rounded-xl border border-outline-variant/5 dark:border-outline-variant/10 shadow-sm dark:shadow-black/10 group hover:border-primary/20 transition-all">
                                                     <div className="flex justify-between items-start mb-3">
                                                         <div>
-                                                            <p className="text-sm font-bold text-primary">{member.name}</p>
-                                                            <p className="text-[10px] font-bold text-outline uppercase">{member.role}</p>
+                                                            <p className="text-sm font-bold text-primary dark:text-white">{member.name}</p>
+                                                            <p className="text-[10px] font-bold text-outline dark:text-white/40 uppercase">{member.role}</p>
                                                         </div>
                                                         <span className="text-xs font-headline font-black text-secondary">{member.totalEmissions?.toFixed(1) || 0} kg</span>
                                                     </div>
@@ -410,8 +410,8 @@ export default function DashboardPage() {
 
                     {activeSidebarTab === 'Members' && (
                         <section className="animate-in fade-in duration-500">
-                            <h1 className="text-4xl font-headline font-extrabold tracking-tighter text-primary mb-2">Family Members</h1>
-                            <p className="text-outline text-sm mb-12">Detailed analysis of individual footprints.</p>
+                            <h1 className="text-4xl font-headline font-extrabold tracking-tighter text-primary dark:text-white mb-2">Family Members</h1>
+                            <p className="text-outline dark:text-white/60 text-sm mb-12">Detailed analysis of individual footprints.</p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {family?.members.map(member => (
@@ -419,12 +419,12 @@ export default function DashboardPage() {
                                         <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold text-2xl mb-4">
                                             {member.name.charAt(0)}
                                         </div>
-                                        <h3 className="text-xl font-bold text-primary">{member.name}</h3>
-                                        <p className="text-xs font-bold text-outline uppercase mb-6">{member.role} • {member.age} yrs</p>
+                                        <h3 className="text-xl font-bold text-primary dark:text-white">{member.name}</h3>
+                                        <p className="text-xs font-bold text-outline dark:text-white/40 uppercase mb-6">{member.role} • {member.age} yrs</p>
 
                                         <div className="bg-surface-container p-4 rounded-xl">
-                                            <p className="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Total Carbon Impact</p>
-                                            <p className="text-2xl font-headline font-extrabold text-secondary">{member.totalEmissions?.toFixed(1)} <span className="text-xs text-outline font-normal">kg CO2</span></p>
+                                            <p className="text-[10px] font-bold text-outline dark:text-white/40 uppercase tracking-widest mb-1">Total Carbon Impact</p>
+                                            <p className="text-2xl font-headline font-extrabold text-secondary dark:text-primary">{member.totalEmissions?.toFixed(1)} <span className="text-xs text-outline dark:text-white/40 font-normal">kg CO2</span></p>
                                         </div>
 
                                         <div className="mt-6">
@@ -446,19 +446,19 @@ export default function DashboardPage() {
 
                     {activeSidebarTab === 'Insights' && insights && (
                         <section className="animate-in fade-in duration-500">
-                            <h1 className="text-4xl font-headline font-extrabold tracking-tighter text-primary mb-2">Insights</h1>
-                            <p className="text-outline text-sm mb-12">Aggregated data models served directly from the Java backend streams.</p>
+                            <h1 className="text-4xl font-headline font-extrabold tracking-tighter text-primary dark:text-white mb-2">Insights</h1>
+                            <p className="text-outline dark:text-white/60 text-sm mb-12">Aggregated data models served directly from the Java backend streams.</p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                                 {/* Top Emitter */}
                                 <div className="bg-secondary-container/20 dark:bg-secondary-container/10 p-8 rounded-2xl border border-secondary/20 dark:border-secondary/10">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className="material-symbols-outlined text-secondary">trending_up</span>
-                                        <h3 className="font-bold text-primary">Highest Contributor</h3>
+                                        <h3 className="font-bold text-primary dark:text-white">Highest Contributor</h3>
                                     </div>
                                     {insights.topEmitter ? (
                                         <>
-                                            <h2 className="text-4xl font-headline font-extrabold text-primary mb-1">{insights.topEmitter.name}</h2>
+                                            <h2 className="text-4xl font-headline font-extrabold text-primary dark:text-white mb-1">{insights.topEmitter.name}</h2>
                                             <p className="text-secondary font-bold">{insights.topEmitter.emissions.toFixed(1)} kg CO2</p>
                                         </>
                                     ) : <p className="text-outline">No data yet.</p>}
@@ -468,23 +468,23 @@ export default function DashboardPage() {
                                 <div className="bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className="material-symbols-outlined text-primary">groups</span>
-                                        <h3 className="font-bold text-primary">Family Average</h3>
+                                        <h3 className="font-bold text-primary dark:text-white">Family Average</h3>
                                     </div>
-                                    <h2 className="text-4xl font-headline font-extrabold text-primary mb-1">
+                                    <h2 className="text-4xl font-headline font-extrabold text-primary dark:text-white mb-1">
                                         {(insights.totalEmissions / Math.max(1, family?.members.length || 1)).toFixed(1)}
                                     </h2>
-                                    <p className="text-outline font-bold">kg CO2 per person</p>
+                                    <p className="text-outline dark:text-white/50 font-bold">kg CO2 per person</p>
                                 </div>
                             </div>
 
                             {/* Category Breakdown */}
                             <div className="bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5">
-                                <h3 className="font-headline font-bold text-primary mb-6">Emissions by Category</h3>
+                                <h3 className="font-headline font-bold text-primary dark:text-white mb-6">Emissions by Category</h3>
                                 <div className="space-y-6">
                                     {Object.entries(insights.categories).map(([category, value]: any) => (
                                         <div key={category}>
                                             <div className="flex justify-between text-sm font-bold mb-2">
-                                                <span className="capitalize text-primary">{category}</span>
+                                                <span className="capitalize text-primary dark:text-white">{category}</span>
                                                 <span className="text-secondary">{value.toFixed(1)} kg</span>
                                             </div>
                                             <div className="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">

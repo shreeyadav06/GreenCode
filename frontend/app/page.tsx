@@ -21,10 +21,6 @@ export default function LandingPage() {
           </div>
 
           <div className="relative z-10 px-8 md:px-24 max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full px-5 py-2 mb-8">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-white/90 font-body text-xs tracking-widest uppercase">Carbon Footprint Intelligence</span>
-            </div>
             <h1 className="text-white font-headline text-5xl md:text-7xl font-extrabold leading-[1.1] editorial-text-shadow tracking-tight">
               Greencode : Personal Carbon Footprint Tracker.
             </h1>
