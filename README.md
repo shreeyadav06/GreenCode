@@ -1,28 +1,25 @@
-# GreenCode
+<div align="center">
 
-A personal and family carbon footprint tracker. Log daily activities across travel, food, and energy categories and visualize your household's environmental impact through an interactive dashboard.
+# GreenCode - Personal Carbon Footprint Tracker
 
-**Live Demo:** [green-code-pi.vercel.app](https://green-code-pi.vercel.app/)
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.1.7-black?style=for-the-badge&logo=nextdotjs" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
+</p>
 
----
+**Log daily activities across travel, food, and energy categories and visualize your household's environmental impact through an interactive dashboard.**
 
-## Tech Stack
+[Live Demo](https://green-code-pi.vercel.app/) | [Features](#features) | [Getting Started](#getting-started) | [Tech Stack](#tech-stack)
 
-### Frontend
-- Next.js 16 (App Router)
-- React 19
-- TypeScript 5
-- Tailwind CSS 4
-- Firebase Authentication (Google + Email/Password)
-- next-themes (Light/Dark mode)
+</div>
 
-### Backend
-- Java 21 (Maven)
-- Built-in Java HttpServer (`com.sun.net.httpserver`)
-- Firebase Admin SDK 9.2.0
-- Google Cloud Firestore (database)
-- Jackson Databind 2.16.1 (JSON serialization)
-- Deployed on Render
+<br/>
+
+## About
+
+GreenCode is a comprehensive personal and family carbon footprint tracker. By allowing users to log daily activities across multiple categories—such as travel, food consumption, and energy usage—it provides a clear visualization of your household's environmental impact through an interactive, live-updating dashboard.
 
 ---
 
@@ -50,6 +47,26 @@ A personal and family carbon footprint tracker. Log daily activities across trav
 
 ---
 
+## Tech Stack
+
+### Frontend
+- Next.js 16 (App Router)
+- React 19
+- TypeScript 5
+- Tailwind CSS 4
+- Firebase Authentication (Google + Email/Password)
+- next-themes (Light/Dark mode)
+
+### Backend
+- Java 21 (Maven)
+- Built-in Java HttpServer (`com.sun.net.httpserver`)
+- Firebase Admin SDK 9.2.0
+- Google Cloud Firestore (database)
+- Jackson Databind 2.16.1 (JSON serialization)
+- Deployed on Render
+
+---
+
 ## API Endpoints
 
 The Java backend exposes the following REST API:
@@ -63,29 +80,7 @@ The Java backend exposes the following REST API:
 
 ---
 
-## Project Structure
-
-```
-GreenCode/
-  backend/
-    src/main/java/com/tracker/   -- Java API server
-    pom.xml                      -- Maven dependencies
-    Dockerfile                   -- Container config for Render
-    run.ps1                      -- Local dev script (Windows)
-  frontend/
-    app/
-      page.tsx                   -- Landing page
-      dashboard/page.tsx         -- Dashboard
-      login/page.tsx             -- Authentication page
-      globals.css                -- Design tokens and theme
-    components/                  -- Navbar, Footer, ThemeToggle, ProtectedRoute
-    contexts/AuthContext.tsx      -- Firebase auth + guest mode provider
-    lib/firebase.ts              -- Firebase client config
-```
-
----
-
-## Local Development
+## Getting Started
 
 ### Prerequisites
 - Java JDK 21+
