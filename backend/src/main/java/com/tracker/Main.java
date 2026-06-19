@@ -9,6 +9,8 @@ import java.net.InetSocketAddress;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        com.tracker.config.FirebaseConfig.initialize();
+
         int port = 8080;
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 

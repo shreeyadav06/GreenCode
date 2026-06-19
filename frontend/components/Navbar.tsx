@@ -2,10 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '../contexts/AuthContext';
+import { auth } from '../lib/firebase';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
     const pathname = usePathname();
     const isDashboard = pathname?.startsWith('/dashboard');
+    const { user } = useAuth();
 
     return (
         <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
@@ -31,18 +35,41 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                <Link
-                    href={isDashboard ? "#log-activity-section" : "/dashboard"}
-                    onClick={(e) => {
-                        if (isDashboard) {
-                            e.preventDefault();
-                            document.getElementById('log-activity-section')?.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }}
-                    className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-headline text-sm font-bold hover:opacity-80 transition-all scale-95 active:scale-90"
-                >
-                    {isDashboard ? 'Log Activity' : 'Start Project'}
-                </Link>
+                <div className="flex items-center gap-x-4">
+                    <ThemeToggle />
+                    {user ? (
+                        <>
+                            <span className="text-sm font-medium text-on-surface-variant hidden md:block">
+                                {user.email}
+                            </span>
+                            <button
+                                onClick={() => auth.signOut()}
+                                className="text-primary hover:text-red-500 font-headline text-sm font-bold transition-colors"
+                            >
+                                Sign Out
+                            </button>
+                            <Link
+                                href={isDashboard ? "#log-activity-section" : "/dashboard"}
+                                onClick={(e) => {
+                                    if (isDashboard) {
+                                        e.preventDefault();
+                                        document.getElementById('log-activity-section')?.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                }}
+                                className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-headline text-sm font-bold hover:opacity-80 transition-all scale-95 active:scale-90"
+                            >
+                                {isDashboard ? 'Log Activity' : 'Dashboard'}
+                            </Link>
+                        </>
+                    ) : (
+                        <Link
+                            href="/login"
+                            className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-headline text-sm font-bold hover:opacity-80 transition-all scale-95 active:scale-90"
+                        >
+                            Sign In
+                        </Link>
+                    )}
+                </div>
             </div>
         </nav>
     );

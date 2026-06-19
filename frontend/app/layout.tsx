@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "Greencode | Smarter, Greener, Faster",
   description: "Building smarter infrastructure and low-emission tech for a sustainable future.",
 };
+import { Providers } from "./providers";
 
 export default function RootLayout({
   children,
@@ -33,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${manrope.variable} antialiased font-body bg-background text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

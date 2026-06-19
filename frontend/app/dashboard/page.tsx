@@ -42,11 +42,11 @@ export default function DashboardPage() {
 
     const fetchData = async () => {
         try {
-            const famRes = await fetch('http://localhost:8080/api/family');
+            const famRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/family`);
             const famData = await famRes.json();
             setFamily(famData);
 
-            const insRes = await fetch('http://localhost:8080/api/insights');
+            const insRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/insights`);
             const insData = await insRes.json();
             setInsights(insData);
         } catch (err) {
@@ -90,7 +90,7 @@ export default function DashboardPage() {
 
         setAddingMember(true);
         try {
-            const res = await fetch('http://localhost:8080/api/members', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/members`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(memberForm)
@@ -132,7 +132,7 @@ export default function DashboardPage() {
                 activityPayload.quantity = 1;
             }
 
-            const res = await fetch('http://localhost:8080/api/family', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/family`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

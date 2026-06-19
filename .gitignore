@@ -22,7 +22,13 @@ frontend/build/
 Thumbs.db
 
 # Large files
-hero.png
+# hero.png
 
 # Environment
+.env
+.env.local
+.env.*.local
+
+# Firebase keys
+serviceAccountKey.json
 .env*
