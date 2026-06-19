@@ -1,15 +1,17 @@
-# GreenCode Requirements (Project Environment)
+# GreenCode -- Project Requirements
+# This documents runtime and tooling dependencies for this repository.
+# This is not a Python pip requirements file.
 
-This file documents runtime and tooling requirements for this repository.
-It is not a Python pip requirements file.
-
-Backend (Java API)
-- Java JDK 25 (required)
+## Backend (Java API Server)
+- Java JDK 21+
+- Maven 3.9+
 - Jackson Databind 2.16.1
 - Jackson Datatype JSR310 2.16.1
-- Built-in Java HttpServer (`com.sun.net.httpserver`)
+- Firebase Admin SDK 9.2.0
+- Google Cloud Firestore
+- Built-in Java HttpServer (com.sun.net.httpserver)
 
-Frontend (Web App)
+## Frontend (Next.js Web App)
 - Node.js 20+
 - npm 10+
 - Next.js 16.1.7
@@ -17,3 +19,11 @@ Frontend (Web App)
 - React DOM 19.2.3
 - TypeScript 5+
 - Tailwind CSS 4+
+- Firebase SDK 12.15.0
+- next-themes 0.4.6
+
+## Cloud Services
+- Firebase Authentication (Google + Email/Password)
+- Google Cloud Firestore (NoSQL database)
+- Vercel (frontend hosting)
+- Render (backend hosting via Docker)
