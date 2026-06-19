@@ -18,7 +18,17 @@ public class FirebaseConfig {
                 return;
             }
 
-            InputStream serviceAccount = new FileInputStream("serviceAccountKey.json");
+            InputStream serviceAccount;
+            String envCredentials = System.getenv("FIREBASE_CREDENTIALS");
+            
+            if (envCredentials != null && !envCredentials.trim().isEmpty()) {
+                serviceAccount = new java.io.ByteArrayInputStream(envCredentials.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                System.out.println("Initializing Firebase from FIREBASE_CREDENTIALS env var.");
+            } else {
+                serviceAccount = new FileInputStream("serviceAccountKey.json");
+                System.out.println("Initializing Firebase from serviceAccountKey.json file.");
+            }
+
             GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(credentials)
