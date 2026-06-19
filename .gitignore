@@ -38,3 +38,8 @@ Thumbs.db
 
 # AI Agent scratch files
 scratch/
+
+# GSD and Graphify
+.planning/
+graphify-out/
+
