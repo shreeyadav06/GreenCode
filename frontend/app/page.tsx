@@ -39,25 +39,9 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce">
-            <span className="text-white/40 text-xs font-body tracking-widest uppercase">Scroll</span>
-            <svg className="w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-          </div>
         </section>
 
 
-        {/* Stats Strip */}
-        <section className="relative bg-surface-container-low dark:bg-surface-container border-y border-outline-variant/10 dark:border-outline-variant/5">
-          <div className="max-w-screen-2xl mx-auto px-8 md:px-24 py-10 md:py-14">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-              <StatItem value="4+" label="Tracking Categories" />
-              <StatItem value="Real-time" label="Carbon Analytics" />
-              <StatItem value="AI" label="Powered Insights" />
-              <StatItem value="100%" label="Open Source" />
-            </div>
-          </div>
-        </section>
 
 
         {/* Impact Section */}
@@ -101,12 +85,12 @@ export default function LandingPage() {
                 </div>
 
                 {/* Row 2 */}
-                <ImpactCard title="ENERGY MONITORING" category="Service" icon="⚡" />
-                <ImpactCard title="TRAVEL INTELLIGENCE" category="Service" icon="✈️" />
+                <ImpactCard title="ENERGY MONITORING" category="Service" />
+                <ImpactCard title="TRAVEL INTELLIGENCE" category="Service" />
 
                 {/* Row 3 */}
-                <ImpactCard title="FOOD TRACKING" category="Service" icon="🥗" />
-                <ImpactCard title="MADE WITH JAVA" category="Tech Stack" icon="☕" />
+                <ImpactCard title="FOOD TRACKING" category="Service" />
+                <ImpactCard title="MADE WITH JAVA" category="Tech Stack" />
               </div>
 
             </div>
@@ -120,14 +104,6 @@ export default function LandingPage() {
   );
 }
 
-function StatItem({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="text-center md:text-left">
-      <div className="font-headline text-2xl md:text-3xl font-extrabold text-primary">{value}</div>
-      <div className="mt-1 font-body text-sm text-on-surface-variant/60 dark:text-on-surface-variant/40 tracking-wide">{label}</div>
-    </div>
-  );
-}
 
 function FeatureItem({ number, title, description }: { number: string; title: string; description: string }) {
   return (
@@ -141,15 +117,12 @@ function FeatureItem({ number, title, description }: { number: string; title: st
   );
 }
 
-function ImpactCard({ title, category, icon }: { title: string; category: string; icon: string }) {
+function ImpactCard({ title, category }: { title: string; category: string }) {
   return (
     <div className="group relative bg-surface-container-low dark:bg-surface-container-high/50 p-6 rounded-2xl flex flex-col justify-between aspect-video md:aspect-auto md:h-48 border border-outline-variant/15 dark:border-outline-variant/10 hover:border-primary/30 dark:hover:border-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-black/30 overflow-hidden">
       {/* Subtle gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 group-hover:from-primary/5 group-hover:via-primary/3 group-hover:to-primary/10 transition-all duration-500 rounded-2xl"></div>
-      <div className="relative z-10 flex justify-between items-start">
-        <span className="font-body text-xs text-on-surface-variant/50 dark:text-on-surface-variant/30 uppercase tracking-wider">{category}</span>
-        <span className="text-2xl opacity-60 group-hover:opacity-100 transition-opacity group-hover:scale-110 transform duration-300">{icon}</span>
-      </div>
+      <span className="relative z-10 font-body text-xs text-on-surface-variant/50 dark:text-on-surface-variant/30 uppercase tracking-wider">{category}</span>
       <h4 className="relative z-10 font-headline text-lg font-bold text-on-surface dark:text-on-surface leading-tight mt-auto">{title}</h4>
     </div>
   );

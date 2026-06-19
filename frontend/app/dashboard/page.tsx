@@ -165,9 +165,9 @@ export default function DashboardPage() {
 
             <div className="flex max-w-[1440px] mx-auto min-h-screen">
                 {/* Sidebar */}
-                <aside className="w-72 fixed h-[calc(100vh-6rem)] hidden lg:flex flex-col gap-8 py-8 px-6 border-r border-outline-variant/10">
+                <aside className="w-72 fixed h-[calc(100vh-6rem)] hidden lg:flex flex-col gap-8 py-8 px-6 border-r border-outline-variant/10 dark:border-outline-variant/5">
                     <div className="mb-4">
-                        <div className="bg-primary/5 p-4 rounded-2xl border border-primary/10">
+                        <div className="bg-primary/5 dark:bg-primary/10 p-4 rounded-2xl border border-primary/10 dark:border-primary/15">
                             <p className="font-headline uppercase tracking-widest text-[10px] text-primary/70 mb-1">Family Unit</p>
                             <h3 className="text-xl font-bold text-primary tracking-tight">{family?.familyName}</h3>
                             <p className="text-[10px] font-bold text-secondary mt-1 uppercase">Active Monitoring</p>
@@ -181,7 +181,7 @@ export default function DashboardPage() {
                     </nav>
 
                     {/* Add Member Form */}
-                    <div className="mt-auto bg-surface-container p-6 rounded-2xl">
+                    <div className="mt-auto bg-surface-container dark:bg-surface-container-high/50 p-6 rounded-2xl border border-transparent dark:border-outline-variant/5">
                         <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Add Member</h4>
                         <form onSubmit={handleAddMember} className="space-y-3">
                             <input
@@ -256,7 +256,7 @@ export default function DashboardPage() {
 
                             <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
                                 {/* Activity Logger */}
-                                <div id="log-activity-section" className="xl:col-span-8 bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 shadow-sm">
+                                <div id="log-activity-section" className="xl:col-span-8 bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5 shadow-sm dark:shadow-black/20">
                                     <div className="flex items-center justify-between mb-8">
                                         <h2 className="text-2xl font-headline font-bold text-primary">Log Activity</h2>
                                         <div className="flex gap-1 bg-surface-container p-1 rounded-xl">
@@ -381,11 +381,11 @@ export default function DashboardPage() {
 
                                 {/* Member List (Quick Glance) */}
                                 <div className="xl:col-span-4 flex flex-col gap-8">
-                                    <div className="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 shadow-sm h-full">
+                                    <div className="bg-surface-container dark:bg-surface-container-high/50 p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5 shadow-sm dark:shadow-black/20 h-full">
                                         <h3 className="text-xl font-headline font-bold text-primary mb-8">Family Impact</h3>
                                         <div className="space-y-4">
                                             {family?.members.map(member => (
-                                                <div key={member.name} className="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/5 shadow-sm group hover:border-primary/20 transition-all">
+                                                <div key={member.name} className="bg-surface-container-lowest dark:bg-surface-container p-5 rounded-xl border border-outline-variant/5 dark:border-outline-variant/10 shadow-sm dark:shadow-black/10 group hover:border-primary/20 transition-all">
                                                     <div className="flex justify-between items-start mb-3">
                                                         <div>
                                                             <p className="text-sm font-bold text-primary">{member.name}</p>
@@ -415,7 +415,7 @@ export default function DashboardPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {family?.members.map(member => (
-                                    <div key={member.name} className="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10">
+                                    <div key={member.name} className="bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5">
                                         <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold text-2xl mb-4">
                                             {member.name.charAt(0)}
                                         </div>
@@ -451,7 +451,7 @@ export default function DashboardPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                                 {/* Top Emitter */}
-                                <div className="bg-secondary-container/20 p-8 rounded-2xl border border-secondary/20">
+                                <div className="bg-secondary-container/20 dark:bg-secondary-container/10 p-8 rounded-2xl border border-secondary/20 dark:border-secondary/10">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className="material-symbols-outlined text-secondary">trending_up</span>
                                         <h3 className="font-bold text-primary">Highest Contributor</h3>
@@ -465,7 +465,7 @@ export default function DashboardPage() {
                                 </div>
 
                                 {/* Average */}
-                                <div className="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10">
+                                <div className="bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className="material-symbols-outlined text-primary">groups</span>
                                         <h3 className="font-bold text-primary">Family Average</h3>
@@ -478,7 +478,7 @@ export default function DashboardPage() {
                             </div>
 
                             {/* Category Breakdown */}
-                            <div className="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10">
+                            <div className="bg-surface-container-lowest dark:bg-surface-container p-8 rounded-2xl border border-outline-variant/10 dark:border-outline-variant/5">
                                 <h3 className="font-headline font-bold text-primary mb-6">Emissions by Category</h3>
                                 <div className="space-y-6">
                                     {Object.entries(insights.categories).map(([category, value]: any) => (

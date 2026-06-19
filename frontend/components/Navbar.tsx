@@ -9,7 +9,16 @@ import ThemeToggle from './ThemeToggle';
 export default function Navbar() {
     const pathname = usePathname();
     const isDashboard = pathname?.startsWith('/dashboard');
-    const { user } = useAuth();
+    const { user, isGuest, logoutGuest } = useAuth();
+
+    const handleSignOut = () => {
+        if (isGuest) {
+            logoutGuest();
+            window.location.href = '/';
+        } else {
+            auth.signOut();
+        }
+    };
 
     return (
         <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
@@ -37,16 +46,21 @@ export default function Navbar() {
 
                 <div className="flex items-center gap-x-4">
                     <ThemeToggle />
-                    {user ? (
+                    {(user || isGuest) ? (
                         <>
                             <span className="text-sm font-medium text-on-surface-variant hidden md:block">
-                                {user.email}
+                                {isGuest ? (
+                                    <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                        Guest Mode
+                                    </span>
+                                ) : user?.email}
                             </span>
                             <button
-                                onClick={() => auth.signOut()}
+                                onClick={handleSignOut}
                                 className="text-primary hover:text-red-500 font-headline text-sm font-bold transition-colors"
                             >
-                                Sign Out
+                                {isGuest ? 'Exit Guest' : 'Sign Out'}
                             </button>
                             <Link
                                 href={isDashboard ? "#log-activity-section" : "/dashboard"}

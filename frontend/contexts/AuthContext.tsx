@@ -7,15 +7,24 @@ import { auth } from '../lib/firebase';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
+  isGuest: boolean;
+  loginAsGuest: () => void;
+  logoutGuest: () => void;
 }
 
-const AuthContext = createContext<AuthContextType>({ user: null, loading: true });
+const AuthContext = createContext<AuthContextType>({ user: null, loading: true, isGuest: false, loginAsGuest: () => {}, logoutGuest: () => {} });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
+    // Check if guest mode was previously set
+    if (typeof window !== 'undefined' && sessionStorage.getItem('guestMode') === 'true') {
+      setIsGuest(true);
+    }
+
     // Handle redirect result from signInWithRedirect
     getRedirectResult(auth).then((result) => {
       if (result && result.user && window.location.pathname === '/login') {
@@ -33,8 +42,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => unsubscribe();
   }, []);
 
+  const loginAsGuest = () => {
+    setIsGuest(true);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('guestMode', 'true');
+    }
+  };
+
+  const logoutGuest = () => {
+    setIsGuest(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('guestMode');
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, isGuest, loginAsGuest, logoutGuest }}>
       {!loading && children}
     </AuthContext.Provider>
   );
