@@ -152,10 +152,22 @@ export default function DashboardPage() {
         }
     };
 
+    const [loadingMessage, setLoadingMessage] = useState("Initializing GreenCode Dashboard");
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+        if (loading) {
+            timeoutId = setTimeout(() => {
+                setLoadingMessage("Waking up the backend server... (This may take up to 50 seconds on the free tier)");
+            }, 5000);
+        }
+        return () => clearTimeout(timeoutId);
+    }, [loading]);
+
     if (loading) return (
-        <div className="flex h-screen flex-col items-center justify-center bg-background">
-            <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="font-headline font-bold text-primary uppercase tracking-[0.2em] text-xs">Initializing GreenCode Dashboard</p>
+        <div className="flex h-screen flex-col items-center justify-center bg-background px-6 text-center">
+            <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-6"></div>
+            <p className="font-headline font-bold text-primary uppercase tracking-[0.2em] text-xs max-w-md leading-relaxed transition-all duration-500">{loadingMessage}</p>
         </div>
     );
 
